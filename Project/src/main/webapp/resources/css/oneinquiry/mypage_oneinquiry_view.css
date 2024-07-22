@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+	main {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			width: 100%;
+	}
+		
+	h2 {
+		font-family: 'Gamja Flower', cursive;
+		font-size: 50px;
+		padding: 20px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	table {
+		padding: 15px;
+		border-radius: 10px;
+
+	}
+	
+	th {
+		
+		background-color: #C4DEFF;
+		box-shadow: 2px 2px 5px #C4DEFF;
+		
+	}
+	
+	td, th {
+		padding: 15px;
+		box-shadow: 0px 1px 2px #C4DEFF;
+		text-align: center;
+		font-family: Nanum Gothic;
+		font-weight: bold;
+		border-radius: 5px;
+	}
