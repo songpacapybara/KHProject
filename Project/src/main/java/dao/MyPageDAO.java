@@ -156,10 +156,10 @@ public class MyPageDAO {
 	}
 	 
 	//7/12추가
-		public int CompleteReview(int payment_reserve_idx) {
-			System.out.println(payment_reserve_idx);
-			int res = sqlSession.update("mypage.CompleteReview", payment_reserve_idx);
-			return res;
-		}
+	public int CompleteReview(int reserve_idx) {
+	    System.out.println(reserve_idx);
+	    int res = sqlSession.update("mypage.CompleteReview", reserve_idx);
+	    return res;
+	}
 
 }

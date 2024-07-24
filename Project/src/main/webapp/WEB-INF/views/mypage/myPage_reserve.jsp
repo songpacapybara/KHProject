@@ -79,7 +79,8 @@
 	
 	<body>
 		<input type="hidden" name="reserve_idx" value="${vo.reserve_idx}">
-	
+		
+		
 		<h3>내가 만든 예약</h3>
 		
 		<div id="reserve_containa">
@@ -124,14 +125,15 @@
 				        </c:if>
 				        
 				        	<!-- 7/11 -->
-				        <c:if test="${vo.reserve_cancel eq 3}">
-				            <td><input type="button" value="후기작성" onclick="review('${vo.reserve_idx}','${vo.reserve_sitter_name }');"></td>
-				        </c:if>
+				       <c:if test="${vo.reserve_cancel eq 3}">
+						    <td><input type="button" value="후기작성" onclick="review('${vo.reserve_idx}','${vo.reserve_sitter_name }','${vo.reserve_sitter_idx }');"></td>
+					   </c:if>
+
 				        
 				        <c:if test="${vo.reserve_cancel eq 4}">
-				            <td><input type="button" value="후기작성 완료" onclick="review('${vo.reserve_idx}','${vo.reserve_sitter_name }');" disabled></td>
+				            <td><input type="button" value="후기작성 완료" onclick="review('${vo.reserve_idx}','${vo.reserve_sitter_name }','${vo.reserve_sitter_idx }');" disabled></td>
 				        </c:if>
-				    </tr>
+				    </tr>	
 				</c:forEach>
 			</table>
 			
@@ -143,17 +145,14 @@
 	</body>
 	<!-- 7/11 -->
 	<script>
-	    function review(reserve_idx,reserve_sitter_name) {
+	    function review(reserve_idx,reserve_sitter_name,reserve_sitter_idx) {
 	        let result = confirm("후기를 작성하시겠습니까?");
 	        if (result) {
-	        	 location.href = 'review_write.do?reserve_idx=' + reserve_idx + '&reserve_sitter_name=' + reserve_sitter_name;
+	        	 location.href = 'review_write.do?reserve_idx=' + reserve_idx + '&reserve_sitter_name=' + reserve_sitter_name + '&reserve_sitter_idx=' + reserve_sitter_idx;
 	        } else {
 	            alert("후기 작성을 취소하셨습니다.");
 	        }
 	    }
-	    
-	    
-    
 	</script>
 		<!-- 7/11 -->
 </html>

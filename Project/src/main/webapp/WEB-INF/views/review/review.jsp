@@ -80,28 +80,32 @@
         }
     </script>
 
-<script>
-    function del(f){
+		<script>
+    function del(review_user_idx){
             
-            let idx = document.getElementById('user_idx').value;
+    	if (!confirm("삭제 하시겠습니까?")) {
+            return;
+        }
             
             
-            let url = "delete.do";
-            let param = "idx="+idx;
+            let url = "reviewdelete.do";
+            let param = "review_user_idx="+review_user_idx;
             sendRequest( url, param, resultFn, "post" );
          }
          
-         function resultFn(){
-            if( xhr.readyState == 4 && xhr.status == 200 ){
-               
-               let data = xhr.responseText;
-               let json = (new Function('return '+data))();
-               
-      
-                  if()
-                  
+    function resultFn() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let data = xhr.responseText;
+            let json = (new Function('return ' + data))();
+
+            if (json[0].result == 'yes') {
+                alert("삭제성공");
+                location.href = "admin_notice_list.do?page=${param.page}";
+            } else {
+                alert("삭제실패");
             }
-         }
+        }
+    }
          </script>
 
 </head>
@@ -184,7 +188,8 @@
 							<h3> ${vo.review_content} </h3>
 
 						</div>
-						<input type="button" value="삭제" onclick="del(this.form)">
+						
+						 <input type="button" value="삭제" onclick="del(${vo.review_user_idx})">
 					</div>
 				</div>
 			</c:forEach>

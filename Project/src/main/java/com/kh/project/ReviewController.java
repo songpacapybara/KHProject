@@ -81,15 +81,19 @@ public class ReviewController {
 
 	/*<!-- 7/11 -->*/
 	@RequestMapping("/review_write.do")
-	public String insert_form(Integer reserve_idx ,Model model,String reserve_sitter_name) {
+	public String insert_form(Integer reserve_idx ,Model model,String reserve_sitter_name,Integer reserve_sitter_idx) {
 		
 		ReserveVO reserve = new ReserveVO();
 		
 		reserve.setReserve_idx(reserve_idx);
 		reserve.setReserve_sitter_name(reserve_sitter_name);
+		reserve.setReserve_sitter_idx(reserve_sitter_idx);
+		
 		
 		model.addAttribute("reserve_idx",reserve_idx);
 		model.addAttribute("reserve_sitter_name",reserve_sitter_name);
+		model.addAttribute("reserve_sitter_idx",reserve_sitter_idx);
+		
 		System.out.println(reserve_sitter_name);
 		return Common.Review.VIEW_PATH_REVIEW + "review_write.jsp";
 	}
@@ -134,7 +138,9 @@ public class ReviewController {
 	@RequestMapping(value = "/reviewdelete.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String delete(int review_user_idx) {
+		
 		int res = review_dao.delete(review_user_idx);
+		
 		if (res > 0) {
 			// 삭제 성공
 			return "[{'result':'clear'}]";

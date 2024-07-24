@@ -30,6 +30,7 @@ public class ReviewDAO {
 	}
 
 	public int delete(int review_user_idx) {
+		System.out.println("삭제다오" + review_user_idx);
 		int res = sqlSession.delete("review.review_delete", review_user_idx);
 		return res;
 	}

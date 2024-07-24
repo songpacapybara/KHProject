@@ -277,18 +277,18 @@ public class MyPageController {
 		@RequestMapping("completereview.do")
 		@ResponseBody
 		public String completereview(Model model, int reserve_idx) {
-			System.out.println("reserve_idx = " + reserve_idx);
-			int res = mypage_dao.CompleteReview(reserve_idx);
-			
-			String resultStr = "";
-			String result = "no";
-			if (res > 0) {
-				result = "yes";
-			}
+		   
+		    int res = mypage_dao.CompleteReview(reserve_idx);
+		    
+		    
+		    String resultStr = "";
+		    String result = "no";
+		    if (res > 0) {
+		        result = "yes";
+		    }
+		    resultStr = String.format("[{'result':'%s'}]", result);
 
-			resultStr = String.format("[{'result':'%s'}]", result);
-
-			return resultStr;
+		    return resultStr;
 		}
 
 	// 마이페이지 즐겨찾기 목록

@@ -176,15 +176,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateReserveStatus" parameterType="int">
 		update RESERVE set reserve_status='결제완료', reserve_cancel=3
-		where reserve_idx=#{payment_reserve_idx}
+		where 	reserve_idx=#{payment_reserve_idx}
 	</update>
 	
 	
 	<!-- 7/12 추가 -->
 	<update id="CompleteReview" parameterType="int">
-		update RESERVE
-		 set reserve_cancel = 4, reserve_status = '후기완료'
-		where reserve_idx=#{payment_reserve_idx}
+    update RESERVE
+    set reserve_cancel = 4, reserve_status = '후기완료'
+    where reserve_idx=#{reserve_idx}
 	</update>
 	
 </mapper>

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,33 +37,37 @@
                 return;  
             }      
             
-            let reserveIdx = $("input[name='review_sitter_name']").val();
+            
+            
+            const reserve_idx = f.reserve_idx.value;
 
-            console.log("Reserve Index: ", reserveIdx);
+            if (reserve_idx) {
+                completeReview(reserve_idx);
+            }
+
             
-            
+            f.submit();
+        }
+
+        function completeReview(reserve_idx) {
             $.ajax({
                 url: 'completereview.do',
                 type: 'POST',
-                data: {
-                    reserve_idx: $("input[name='review_sitter_name']").val()
-                },
+                data: { reserve_idx: reserve_idx },
                 success: function(response) {
-                    var result = JSON.parse(response);
-                    if (result.result === 'yes') {
-                        f.submit();
-                    } else {
-                        alert('후기 완료 상태 업데이트 실패');
-                    }
+                    console.log(response);
+                    alert("후기 작성 완료");
                 },
-                error: function() {
-                    alert('후기 완료 상태 업데이트 중 오류 발생');
+                error: function(error) {
+                    console.log(error);
                 }
             });
-            
-            f.submit();
-            
         }
+            
+            
+           
+
+            
         
         
         
@@ -142,8 +147,12 @@
 			
 				<!-- 7/11 -->
 			<div class="form-group">
-			<input type="hidden" name="review_sitter_name" value="${reserve_idx }">	
-				<label class="label_name" for="review_sitter_name" >${reserve_sitter_name }시터님에게 케어 받음</label>	
+			<input type="hidden" name="review_sitter_name" value="${reserve_sitter_name }">	
+			<input type="hidden" name="review_user_idx" value="${user.user_idx }">
+			<input type="hidden" name="review_sitter_idx" value="${reserve_sitter_idx }">
+			<input type="hidden" name="reserve_idx" value="${reserve_idx }">
+		
+			<label class="label_name" for="review_sitter_name" >${reserve_sitter_name }시터님에게 케어 받음</label>	
 			</div>
 				<!-- 7/11 -->
 				
