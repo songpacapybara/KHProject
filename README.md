@@ -1,5 +1,6 @@
 # 프로젝트명: 반려견 행복케어 프로젝트
 
+![화면 캡처 2024-08-07 134736](https://github.com/user-attachments/assets/23eb7fb4-4d51-4eee-9a5a-a1f711de2f2a)
 
 ## 목차
 - [수행 기간](#수행-기간)
